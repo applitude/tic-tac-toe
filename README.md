@@ -1,9 +1,10 @@
 
+This crash course was made by Kai Jeu Chiem, Saru Subschandran and William Arild Dahl from Applitude student association.
+12/10/2017
+
 # Introduction to JavaScript
 
 In this course you will learn the basics of JavaScript. With JavaScript we will make a simple Tic-Tac-Toe game to demonstrate how to use DOM (Document Object Model) manipulation.
-
-This course is made by Kai Jeu Chiem, Saru Subschandran and William Arild Dahl from Applitude student association.
 
 # Step 0: What are we going to do in this course
 Using JavaScript we will create a simple 
@@ -115,7 +116,7 @@ We can then add a **<title>** tag with a title inside the **<head>** tag.
 ...
 ```
 
-To set the alignments and style the HTML we have to link to a **.css** file. This means we have to link to the **.css** file in the **<head>**. Lets call this file 'ticTacToe.css'.  We can do it like this.
+To set the alignments and to style the HTML we have to link to a **.css** file. This means we have to tell the document to link to the **.css** file in the header. Lets call this file 'ticTacToe.css'. 
 ```HTML
 ...
 <head>
@@ -128,7 +129,7 @@ To set the alignments and style the HTML we have to link to a **.css** file. Thi
 
 **rel="stylesheet"** is an attribute that specifies the relationship between this document and the linked document. In this case the attribute is a stylesheet. It is only used when the **href="..."** attribute is present, which specifies the links destination.
 
-Now lets create a division tag **<div>** inside the body **<body>** which we can use to center and wrap our content.
+Now lets create a division tag **<div>** inside the body **<body>** which we can use to center and wrap the content inside.
 
 ```HTML
 ...
@@ -141,9 +142,10 @@ Now lets create a division tag **<div>** inside the body **<body>** which we can
 </body>
 ...
 ```
+
 **class="className"** is an attribute that makes it possible to define styles which are equal to all elements with the same name. The classes are defined inside a **.css** file.
 
-Lastly, lets add a canvas **<canvas>** to our document, the canvas can be used as a container for graphics.
+Now we have to find a way to display graphics for our game. To do this we can use a canvas. Lets add the canvas **<canvas>** to our document.
 ```HTML
 <body>
     <div class="center-wrapper-parent">
@@ -154,7 +156,7 @@ Lastly, lets add a canvas **<canvas>** to our document, the canvas can be used a
     </div>
 </body>
 ```
-The canvas is actually only a container, to actually draw the graphics inside the canvas we have to use JavaScript. Because we need to create graphics inside the canvas let us create a script tag **<script>** that references **src="..."** us to the **.js** file.
+The canvas is actually only a container, it cannot create graphical content, only contain it. To actually draw the graphics inside the canvas we have to use JavaScript. So, lets add a link to some JavaScript file that we are going to make later. Lets add the script tag **<script>** and reference to the "TicTackToe.js" file using **src="..."**. This can be done as shown bellow.
 
 ```HTML
 <body>
@@ -166,7 +168,9 @@ The canvas is actually only a container, to actually draw the graphics inside th
     </div>
 </body>
 ```
-Now we have finnished setting up our **.html** file. You can see the finnished HTML document bellow.
+You might be wondering why the canvas has an id attribute, this is so that later we can reference to this id inside the JavaScript file.
+
+Now we have finnished setting up our **.html** file. If you want to look at the whole HTML document you can take a look at the finnished document bellow.
 ```HTML
 <!DOCTYPE html>
 <html lang="en">
@@ -186,6 +190,8 @@ Now we have finnished setting up our **.html** file. You can see the finnished H
 ```
 
 ## Prepare the CSS
+Next let us prepare the css file. The only thing needed to add are the id "#tic-tac-toe" and the two classes ".canvas_wrapper" and ".canvas-wrapper-parent".
+
 ```CSS
 #tic-tac-toe {
     display: block;
@@ -204,10 +210,39 @@ Now we have finnished setting up our **.html** file. You can see the finnished H
 }
 ```
 
-# Step 2: JavaScript - Creating the canvas
-## Step 2.1: Setting the variables
+# Step 2: JavaScript - The game
+Before we start programming in JavaScript let us imaginate how and where the game is going to be.
+
+1. We need to be able to look at something to be able to play it.
+* How? We can have something to look at by adding graphics. This can be done inside the canvas.
+
+2. It has to look like a game of Tic-Tac-Toe.
+* How? In Tic-Tac-Toe there are two vertical lines and two horizontal lines which creates cells of nine squares.
+
+3. We need to be able to play the game.
+* How? We should be able to play the game with the cursor. There are two players, whenever a player presses a cell it should show a graphic of an X or a circle dependant of whos turn it is.  
+
+Now that we know how the game is going to be played we can start coding the game.
+
+## Step 2.1: Creating the canvas
+You might remember that we talked about how JavaScript can manipulate the HTML document. What we didn't talk about is why JavaScript are able to do so. To understand this you have to understand how the webpage loads HTML.
+
+### The DOM (Document Object Model) tree
+![alt text](https://github.com/applitude/tic-tac-toe/blob/master/DOM_Tree.gif "The HTML DOM tree of object")
+
+This is the HTML DOM tree. When the webpage is loaded the browser creates a DOM of the page. Using these Objects JavaScript has all that it needs to create dynamic HTML.
+What can JavaScript do with the objects?
+* JavaScript can manipulate all the elements in the HTML page
+* JavaScript can manipulate all the attributes in the HTML page
+* JavaScript can manipulate all the CSS styles in the page
+* JavaScript can add new HTML elements and attributes
+* JavaScript can create new HTML events in the page
+* JavaScript can react to all existing HTML events in the page
+
+//TODO
 ```javascript
-```
+``` 
+
 ## Step 2.2: Get Element from HTML 
 
 # Step 3: Make the board (getInitialBoard)
