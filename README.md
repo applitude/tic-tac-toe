@@ -15,6 +15,8 @@ CSS(Cascading Style Sheet)
 # Step 0.2: What is JavaScript?
 Usually HTML allows you to display static content directly read from the HTML document, but sometimes you would like to control multimedia, animate images or create other dynamically updating content. This can be done using the programming language, JavaScript. 
 
+JavaScript is a high-level, objectoriented programming language, alongside with HTML, CSS it is a core technology for producing web based content. 
+
 # Step 0.3: JavaScript syntax
 ## Variables
 In JavaScrip variables are containers which stores data. In the example bellow you can see how to create variables.
@@ -210,28 +212,17 @@ Next let us prepare the css file. The only thing needed to add are the id "#tic-
 }
 ```
 
-# Step 2: JavaScript - The game
-Before we start programming in JavaScript let us imaginate how and where the game is going to be.
+# Step 2: JavaScript 
 
-1. We need to be able to look at something to be able to play it.
-* How? We can have something to look at by adding graphics. This can be done inside the canvas.
-
-2. It has to look like a game of Tic-Tac-Toe.
-* How? In Tic-Tac-Toe there are two vertical lines and two horizontal lines which creates cells of nine squares.
-
-3. We need to be able to play the game.
-* How? We should be able to play the game with the cursor. There are two players, whenever a player presses a cell it should show a graphic of an X or a circle dependant of whos turn it is.  
-
-Now that we know how the game is going to be played we can start coding the game.
-
-## Step 2.1: Creating the canvas
+## Step 2.1: Explaining HTML objects
 You might remember that we talked about how JavaScript can manipulate the HTML document. What we didn't talk about is why JavaScript are able to do so. To understand this you have to understand how the webpage loads HTML.
 
 ### The DOM (Document Object Model) tree
 ![alt text](https://github.com/applitude/tic-tac-toe/blob/master/DOM_Tree.gif "The HTML DOM tree of object")
 
-This is the HTML DOM tree. When the webpage is loaded the browser creates a DOM of the page. Using these Objects JavaScript has all that it needs to create dynamic HTML.
-What can JavaScript do with the objects?
+This is the HTML DOM tree. When the webpage is loaded the browser creates a DOM of the page. Using these Objects JavaScript has all that it needs to make HTML dynamic.
+
+So, what can JavaScript do with these objects?
 * JavaScript can manipulate all the elements in the HTML page
 * JavaScript can manipulate all the attributes in the HTML page
 * JavaScript can manipulate all the CSS styles in the page
@@ -239,15 +230,84 @@ What can JavaScript do with the objects?
 * JavaScript can create new HTML events in the page
 * JavaScript can react to all existing HTML events in the page
 
-//TODO
+Using this knowledge we can now start programming in JavaScript.
+
+## Step 2.2: Set up the canvas 
+At last we can begin using JavaScript. The first we are going to do is get the canvas element, therefore we are going to define a variables canvasSize.
+ 
 ```javascript
-``` 
+var canvasSize = 500;
+```
+We are going to use the variable to define the canvases size. To get the canvas element from the HTML document we can reference the element from the id attribute.
+```javascript
+...
 
-## Step 2.2: Get Element from HTML 
+var canvas = document.getElementById('tic-tac-toe');
+```
+Now that we have the canvas object we can begin manipulating it and adding the game inside of it. Let us set the canvas width and heigth. Because the game are most likely to be square shaped we sett the width and height to the same value, in this case the canvasSize variable.
 
-# Step 3: Make the board (getInitialBoard)
+```javascript
+...
 
-## Step 3.1: Draw the lines (drawLines)
+canvas.width = canvasSize;
+canvas.height = canvasSize;
+```
+
+Now we have taken the canvas element and placed it inside of the canvas variable. To be able to add and manipulate graphics inside of the canvas we have to create a CanvasRenderingContext2D object, we can do this as follows.
+
+```javascript
+...
+var ctx = canvas.getContext('2d');
+```
+This object represents a two-dimensional rendering context, which can be used to draw text, lines, boxes, circles and other figures on the canvas.
+
+Now that we have finnished preparing the canvas for use we can start creating functions and draw inside the canvas.
+
+
+# Step 3: The Game
+At last we can begin creating the game. But how are we going to do that? Lets start by imagine the game.
+
+What do we need? How do we do it? The best way to answare these questions are by listing it up and answare them.
+
+1. It has to look like a game of Tic-Tac-Toe.
+* How? In Tic-Tac-Toe there are two vertical lines and two horizontal lines which creates cells of nine squares. These cells must be able to store the value of x or circle.
+
+2. We need to be able to look at something to be able to play it.
+* How? We can have something to look at by adding graphics. This can be done inside the canvas.
+
+3. We need to be able to play the game.
+* How? We should be able to play the game with the cursor. There are two players, whenever a player presses a cell it should show the graphic of an X or a circle dependant of whose turn it is.  
+
+## Step 3: Creating the functions
+Now that we know the basics of how the game is going to look like we can begin to create functions that does the right thing.
+
+## Step 3.1: Make the board (getInitialBoard)
+The first thing we need to have in the game is a board. So lets create a function named getInitialBoard
+```javascript
+function getInitialBoard(defaultValue){
+    ...
+}
+```
+Inside the function we can address the first problem. We know that cells has to be made, this can be done by creating a 2D array. But, this raises a problem, there are no 2D arrays in JavaScript. Because there are no 2D arrays in JavaScript we have chosen to create arrays inside of an array thus creating a makeshift "2D array". To do this we use the **.push()** function to "push" values inside of the array.
+Creating the board we first initialise a 1D array. Afterwards we create a for-loop for the X-axis, thereafter we nest another for-loop inside creating the Y-axis. Because we know that the board is square and, we know that in the game of Tic-Tac-Toe there are three columns, and three rows, therefore we can set both the condition to continue until it has run three times. Everytime the X-axis for-loop runs it pushes a new array inside of the board. Everytime the Y-axis for-loop runs it pushes a default value inside the array inside of the x positioned array. At the end it return the newly created board.
+
+```javascript
+function getInitialBoard(defaultValue) {
+    var board = [];
+
+    for(var x = 0; x < 3; x++){
+        board.push([]);
+
+        for(var y = 0; y < 3; y++) {
+            board[x].push(defaultValue);
+        }
+
+    }
+    return board;
+}
+```
+
+## Step 3.3: Draw the lines (drawLines)
 ### lineWidth
 ### lineCap
 ### strokeStyle
@@ -256,8 +316,8 @@ What can JavaScript do with the objects?
 ### lineTo
 ### stroke
 
-## Step 3.2: Set The playing area (playingArea)
+## Step 3.4: Set The playing area (playingArea)
 ### fillStyle
 ### fillRect(xPos, yPos, xSize, ySize)
 
-## Step 4: Event listener and mouse "click" detection
+## Step 4: Mouse support
