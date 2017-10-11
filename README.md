@@ -383,13 +383,77 @@ drawLine(10, lineColor);
 
 ## Step 4: Mouse support
 
-Lets start with implementing mouse support. We start by adding a "mouse" event listener to the canvas.
+Lets start with implementing mouse support. We start by adding a event listener to the canvas. This is a function that constantly listens for imput of our choosing.
 
-```javascript
 canvas.addEventListener('mouseup', function (event){
 ...
 });
-```
+
+The first paramether is what we want to listen for. In this case, we choose the 'mouseup' which means that when the player releases the mouse ( after pressing it down) we do something. 
+
+Now we need a way too make our game turnbased. 
+
+canvas.addEventListener('mouseup', function (event) {
+
+    if(player === 1){
+        player = 2;
+    }
+    else{
+        player = 1;
+    }
+...
+});
+
+Next we would like to know where the players are clicking. We save the mousePositon in a varable calculated by our method getMousePositon which recieves an event from the eventlistener. 
+
+canvas.addEventListener('mouseup', function (event) {
+
+    if(player === 1){
+        player = 2;
+    }
+    else{
+        player = 1;
+    }
+
+    var mousePosition = getMousePosition(event);
+...
+});
+
+With the position we can now place a piece on the canvas, and since we chaged the player, each gets his/hers turn. 
+
+canvas.addEventListener('mouseup', function (event) {
+
+    if(player === 1){
+        player = 2;
+    }
+    else{
+        player = 1;
+    }
+
+    var mousePosition = getMousePosition(event);
+    addPiece(mousePosition);
+...
+});
+
+The last thing we do is to draw the lines again. This is because the playing area is coloring the whole square white.
+
+canvas.addEventListener('mouseup', function (event) {
+
+    if(player === 1){
+        player = 2;
+    }
+    else{
+        player = 1;
+    }
+
+    var mousePosition = getMousePosition(event);
+    addPiece(mousePosition);
+    drawLines(10, lineColor);
+
+});
+
+ If you want to, you can change the size of the third and fourth argument in the "fillRect" method in the playingArea function, and skip this line. 
+
 
 The string **'mouseup'** is the name of the event, while the **function (event)** is required to sepcify the functun to ru when the evnet occurs.
 
