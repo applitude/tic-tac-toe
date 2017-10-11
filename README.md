@@ -322,15 +322,58 @@ function drawLines( lineWidth, strokeStyle) {
 ```
 It takes in two parameters, the width of the line (lineWidth), and the style of the stroke (strokeStyle).
 
-### lineWidth 
-### lineCap
-### strokeStyle
-### beginPath
-### moveTo
-### lineTo
-### stroke
+Earlier we the object (ctx), we can now use this to draw our lines. The first thing we can do is set the width of our line using **lineWidth**, while we're at it we can also set our style stroke **styleStroke**, which in our case is should be a color. Now we can use the **beginPath** so that we can begin creating paths to draw from. We can also define where we are going to start drawing the line, **lineStart**, and how long the line are going to be, **lineLength**.
+ ```javascript
+function drawLines( lineWidth, strokeStyle) {
+    var lineStart = 4;
+    var lineLength = canvasSize - 5;
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = strokeStyle;
+    ctx.beginPath();
+...
+}
+```
+At last we can begin displaying actual graphic. We are going to use the **moveTo** method to set the beginning of the path. Afterwards we can use the **lineTo** method to set the location where the line should end. The parameters are x- and y-cordinates. Now we can use  the **stroke** which draws the path defined with **moveTo** and **lineTo**. 
 
-To draw the board the only thing we need to do is to call the funciton.
+ ```javascript
+function drawLines( lineWidth, strokeStyle) {
+    var lineStart = 4;
+    var lineLength = canvasSize - 5;
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = strokeStyle;
+    ctx.beginPath();
+    
+    ctx.moveTo(lineStart, 1);
+    ctx.lineTo(lineLength, 1);
+    ctx.stroke();
+...
+}
+```
+Congratulations, we have drawn a line! Now that we are able to draw the line we are easily able to draw the rest of the lines necessary co complete the board. Using the for-loop we set multiple start and end points for the paths just modifying the x- and y-cordinates.
+
+````javascript
+function drawLines( lineWidth, strokeStyle) {
+    var lineStart = 4;
+    var lineLength = canvasSize - 5;
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = strokeStyle;
+    ctx.beginPath();
+
+    for(var y = 1; y <= 2; y++){
+        ctx.moveTo(lineStart, y*squareSize);
+        ctx.lineTo(lineLength, y*squareSize);
+    }
+    for(var x = 1; x <= 2; x++){
+        ctx.moveTo(x * squareSize,lineStart);
+        ctx.lineTo(x*  squareSize, lineLength);
+    }
+
+    ctx.stroke();
+
+}
+```
+
+The functions for drawing the board lines are now finnished. To draw the board the only thing we need to do nos is to call the funciton.
 ```javascript
 ...
 drawLine(10, lineColor);
