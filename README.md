@@ -289,7 +289,8 @@ function getInitialBoard(defaultValue){
 }
 ```
 Inside the function we can address the first problem. We know that cells has to be made, this can be done by creating a 2D array. But, this raises a problem, there are no 2D arrays in JavaScript. Because there are no 2D arrays in JavaScript we have chosen to create arrays inside of an array thus creating a makeshift "2D array". To do this we use the **.push()** function to "push" values inside of the array.
-Creating the board we first initialise a 1D array. Afterwards we create a for-loop for the X-axis, thereafter we nest another for-loop inside creating the Y-axis. Because we know that the board is square and, we know that in the game of Tic-Tac-Toe there are three columns, and three rows, therefore we can set both the condition to continue until it has run three times. Everytime the X-axis for-loop runs it pushes a new array inside of the board. Everytime the Y-axis for-loop runs it pushes a default value inside the array inside of the x positioned array. At the end it return the newly created board.
+
+Creating the board we first initialise a normal array. Afterwards we create a for-loop for the X-axis, then we nest another for-loop inside creating the Y-axis. Because we already know how many cells are needed inside a gaem of Tic-Tac-Toe (three columns, and three rows), we can set both the condition to continue until it has run three times (3^2). Everytime the X-axis for-loop runs it pushes a new array inside of the board. Everytime the Y-axis for-loop runs it pushes a default value inside the array inside of the x positioned array. At the end it return the newly created board.
 
 ```javascript
 function getInitialBoard(defaultValue) {
@@ -306,15 +307,35 @@ function getInitialBoard(defaultValue) {
     return board;
 }
 ```
+Now we can create the board, adding the code bellow.
+```javascript
+...
+var board = getInitialBoard("");
+```
 
-## Step 3.3: Draw the lines (drawLines)
-### lineWidth
+## Step 3.3: Draw the board in the canvas (drawLines)
+We have created the board, but you might have noticed that there are nothing in the screen. This is because we haven't actually started drawing anything in the canvas yet. So let create a function that actually draws the board lines in the canvas. lets call it drawLines
+```javascript
+function drawLines( lineWidth, strokeStyle) {
+...
+}
+```
+It takes in two parameters, the width of the line (lineWidth), and the style of the stroke (strokeStyle).
+
+### lineWidth 
 ### lineCap
 ### strokeStyle
 ### beginPath
 ### moveTo
 ### lineTo
 ### stroke
+
+To draw the board the only thing we need to do is to call the funciton.
+```javascript
+...
+drawLine(10, lineColor);
+```
+
 
 ## Step 3.4: Set The playing area (playingArea)
 ### fillStyle
