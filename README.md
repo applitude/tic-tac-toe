@@ -386,7 +386,7 @@ drawLine(10, lineColor);
 Lets start with implementing mouse support. We start by adding a event listener to the canvas. This is a function that constantly listens for imput of our choosing.
 
 
-javascript
+```javascript
 canvas.addEventListener('mouseup', function (event){
 ...
 });
