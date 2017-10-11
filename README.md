@@ -349,7 +349,7 @@ function drawLines( lineWidth, strokeStyle) {
 ...
 }
 ```
-Congratulations, we have drawn a line! Now that we are able to draw the line we are easily able to draw the rest of the lines necessary co complete the board. Using the for-loop we set multiple start and end points for the paths just modifying the x- and y-cordinates.
+Congratulations, we have drawn a line! Now that we are able to draw the line we are easily able to draw the rest of the lines necessary co complete the board. Using the for-loop we set multiple start and end points for the paths just modifying the x- and y-cordinates. To create a better looking line we can round of the line edges by setting **lineCap** to round.
 
 ````javascript
 function drawLines( lineWidth, strokeStyle) {
@@ -357,6 +357,7 @@ function drawLines( lineWidth, strokeStyle) {
     var lineLength = canvasSize - 5;
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = strokeStyle;
+    ctx.lineCap = 'round';
     ctx.beginPath();
 
     for(var y = 1; y <= 2; y++){
@@ -376,12 +377,60 @@ function drawLines( lineWidth, strokeStyle) {
 The functions for drawing the board lines are now finnished. To draw the board the only thing we need to do nos is to call the funciton.
 ```javascript
 ...
+var lineColor = "#808080"; //black
 drawLine(10, lineColor);
 ```
 
-
-## Step 3.4: Set The playing area (playingArea)
-### fillStyle
-### fillRect(xPos, yPos, xSize, ySize)
-
 ## Step 4: Mouse support
+
+Lets start with implementing mouse support. We start by adding a "mouse" event listener to the canvas.
+
+```javascript
+canvas.addEventListener('mouseup', function (event){
+...
+});
+```
+
+The string **'mouseup'** is the name of the event, while the **function (event)** is required to sepcify the functun to ru when the evnet occurs.
+
+We can create the method that gets the mouse position now, giving it the name **getMousePosition**. It should take in the event as a parameter.
+```javascript
+function getMousePosition(event) {
+...
+}
+```
+
+To be able to register where the mouse has clicked first we have to know where it should detect the click. Lets say the canvas is the clickable space.
+```javascript
+function getMousePosition(event) {
+    
+    var rect = canvas.getBoundingClientRect();
+...
+}
+```
+
+The only thing we need to do now is to return cordinates for x and y.
+
+```javascript
+function getMousePosition(event) {
+
+    var rect = canvas.getBoundingClientRect();
+
+    return{
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+    }
+
+}
+```
+Now that we can detect the mouse position we can begin adding tic-tac-toe pieces to the board.
+
+## Step 5: Adding pieces to the board.
+
+Now we want to add an "X" or a "O" when we press a specific cell. We'll make the function **addPiece** with the the press cordinates as the parameter. 
+
+```javascript
+function addPiece(mouse){
+    ...
+}
+```
