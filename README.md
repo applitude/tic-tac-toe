@@ -510,3 +510,70 @@ function addPiece(mouse){
     ...
 }
 ```
+
+Lets start creating some variables that can take the cordinates, then we can use those to making some conditions, if player is 1 we will draw an X, else we will draw a O.
+```javascript
+function addPiece(mouse){
+    var xCorrdinate;
+    var yCorrdinate;
+    ...
+    if(player === 1){
+        drawX(xCoordinate, yCoordinate);
+    }
+    else {
+        drawO(xCoordinate, yCoordinate);
+    }
+}
+```
+The variables (xCoordinate, yCoordinate) is made so that we can use it to check which square we're currently in. It will make sense later. The **drawO** and **drawX** functions will be made in **Step 5.1**.
+
+Now that we know when to draw which piece we now have to decide where to draw them. We know that we have to draw a piece at the mouses coordinates, which means when the mouse is at the right x- and y location. To detect whether the mouse is at the right place we can nest the if statement in the right place.
+```javascript
+...
+            if (mouse.x >= xCoordinate && mouse.x <= xCoordinate + squareSize
+                && mouse.y >= yCoordinate && mouse.y <= yCoordinate + squareSize){
+
+                ...
+
+                if(player === 1){
+                    drawX(xCoordinate, yCoordinate);
+                }
+                else {
+                    drawO(xCoordinate, yCoordinate);
+                }
+            }
+...
+```
+
+The last thing to do now is to iterate through all the allowed square location so that we can compare it to the mouse coordinates.
+
+```javascript
+function addPiece(mouse) {
+    var xCoordinate;
+    var yCoordinate;
+
+    for(var i = 0; i < 3; i++){
+        for(var j = 0; j < 3; j++) {
+            xCoordinate = i * squareSize;
+            yCoordinate = j * squareSize;
+
+            if (mouse.x >= xCoordinate && mouse.x <= xCoordinate + squareSize
+                && mouse.y >= yCoordinate && mouse.y <= yCoordinate + squareSize){
+
+                if(player === 1){
+                    drawX(xCoordinate, yCoordinate);
+                }
+                else {
+                    drawO(xCoordinate, yCoordinate);
+                }
+            }
+        }
+    }
+}
+```
+
+With this we finnished the addPieces method. The last thing to do now is to actually draw the pieces.
+
+### Step 5.1: Creating the draw functions for the pieces.
+
+
