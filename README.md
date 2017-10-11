@@ -351,7 +351,7 @@ function drawLines( lineWidth, strokeStyle) {
 ```
 Congratulations, we have drawn a line! Now that we are able to draw the line we are easily able to draw the rest of the lines necessary co complete the board. Using the for-loop we set multiple start and end points for the paths just modifying the x- and y-cordinates. To create a better looking line we can round of the line edges by setting **lineCap** to round.
 
-````javascript
+```javascript
 function drawLines( lineWidth, strokeStyle) {
     var lineStart = 4;
     var lineLength = canvasSize - 5;
@@ -394,10 +394,10 @@ canvas.addEventListener('mouseup', function (event){
 
 The first paramether is what we want to listen for. In this case, we choose the 'mouseup' which means that when the player releases the mouse ( after pressing it down) we do something. 
 
-Now we need a way too make our game turnbased. 
+Now we need a way too make our game turnbased. We create a player variable so that we can know whose turn it is. Then everytime we click we change the player value.
 
 ```javascript
-
+var player = 1;
 canvas.addEventListener('mouseup', function (event) {
 
     if(player === 1){
@@ -467,7 +467,7 @@ canvas.addEventListener('mouseup', function (event) {
  If you want to, you can change the size of the third and fourth argument in the "fillRect" method in the playingArea function, and skip this line. 
 
 
-The string **'mouseup'** is the name of the event, while the **function (event)** is required to sepcify the functun to ru when the evnet occurs.
+The string **'mouseup'** is the name of the event, while the **function (event)** is required to sepcify the functun to run when the evnet occurs.
 
 We can create the method that gets the mouse position now, giving it the name **getMousePosition**. It should take in the event as a parameter.
 ```javascript
@@ -485,7 +485,7 @@ function getMousePosition(event) {
 }
 ```
 
-The only thing we need to do now is to return cordinates for x and y.
+The only thing we need to do now is to return cordinates for x and y. **clientX** and **clientY** returns the appropriate  X- and Y-cordinates within the client area. When we subtract x from the left and y from top we get the right position inside the canvas.
 
 ```javascript
 function getMousePosition(event) {
