@@ -12,49 +12,50 @@ Using JavaScript we will create a simple
 
 ### Html base elements
 
-´´´html
+```html
 
 // Tells the web browser that this document is an HTML5
 
 <!DOCTYPE html>
 
-´´´
+```
 
-´´´html
+```html
 
 //Defines the root element of the HTML document. All other HTML elements must be contained within this root element. 
 
 <html></html>
 
-´´´
+```
 
-´´´html
+```html
 // Defines a cointainer for a web page's metadata
 
 <head></head>
 
-´´´
+```
 
-´´´html
+```html
 // The container for a web page's content. 
+
 <body></body>
 
-´´´
+```
 
-´´´html
+```html
 
 // Defines a link between the current web page and external link or resource.
 
 <link rel="stylesheet" type="text/css" href="http://www.applitude.no">
 
-´´´
-´´´html
+
+```html
 
 // Defines a container for an external script.
 
 <script src="/javascript/myScript.js"></script>
 
-´´´
+
 
 
 # Step 0.2: What is JavaScript?
