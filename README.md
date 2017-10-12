@@ -9,8 +9,97 @@ In this course you will learn the basics of JavaScript. With JavaScript we will 
 # Step 0: What are we going to do in this course
 Using JavaScript we will create a simple 
 # Step 0.1: Recap of the previous HTML and CSS course
-HTML(Hyper Text Markup Language)
-CSS(Cascading Style Sheet)
+### Html base elements
+
+```html
+
+// Tells the web browser that this document is an HTML5
+
+<!DOCTYPE html>
+
+```
+
+```html
+
+//Defines the root element of the HTML document. All other HTML elements must be contained within this root element. 
+
+<html></html>
+
+```
+
+```html
+// Defines a cointainer for a web page's metadata
+
+<head></head>
+
+```
+
+```html
+// The container for a web page's content. 
+
+<body></body>
+
+```
+
+```html
+
+// Defines a link between the current web page and external link or resource.
+
+<link rel="stylesheet" type="text/css" href="http://www.applitude.no">
+
+
+```html
+
+// Defines a container for an external script.
+
+<script src="/javascript/myScript.js"></script>
+
+``
+
+### CSS
+
+```css
+// CSS syntax
+
+selector {
+  property: value;
+  property: value;
+  ...
+}
+
+// Example
+
+h1 {
+  color:red
+}
+
+// CSS id selector
+
+#id {
+    css declarations;
+}
+
+// Example
+
+#firstname { 
+    background-color: blue;
+}
+
+
+
+// CSS class selector 
+
+.class {
+    css declarations;
+}
+
+// Example
+
+.intro { 
+    background-color: yellow;
+}
+
+```
 
 # Step 0.2: What is JavaScript?
 Usually HTML allows you to display static content directly read from the HTML document, but sometimes you would like to control multimedia, animate images or create other dynamically updating content. This can be done using the programming language, JavaScript. 
