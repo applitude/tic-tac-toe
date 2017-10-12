@@ -8,7 +8,7 @@ In this course you will learn the basics of JavaScript. With JavaScript we will 
 
 ## Step 0: What are we going to do in this course
 Using JavaScript we will create a simple
-## Step 0.1: Recap of the previous HTML and CSS course
+### Step 0.1: Recap of the previous HTML and CSS course
 #### Html base elements
 
 ```html
