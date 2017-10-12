@@ -9,8 +9,9 @@ In this course you will learn the basics of JavaScript. With JavaScript we will 
 # Step 0: What are we going to do in this course
 Using JavaScript we will create a simple 
 # Step 0.1: Recap of the previous HTML and CSS course
-HTML(Hyper Text Markup Language)
-CSS(Cascading Style Sheet)
+´´´html
+
+´´´
 
 # Step 0.2: What is JavaScript?
 Usually HTML allows you to display static content directly read from the HTML document, but sometimes you would like to control multimedia, animate images or create other dynamically updating content. This can be done using the programming language, JavaScript. 
@@ -27,6 +28,9 @@ var z = x + y;
 // x has stored the value 1
 // y has stored the value 2
 // z has stored the value (x + y) which is 3
+
+//shorhand way to create vaiable@
+var = x, y, z=3;
 ```
 Much like other programming languages the sign (=) is an assignment operator, thus you can use it to re-assign variables
 ```javascript
