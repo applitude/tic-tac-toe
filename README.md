@@ -55,7 +55,7 @@ Using JavaScript we will create a simple
 
 <script src="/javascript/myScript.js"></script>
 
-
+``
 
 
 # Step 0.2: What is JavaScript?
