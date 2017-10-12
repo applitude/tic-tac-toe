@@ -6,10 +6,10 @@ This crash course was made by Kai Jeu Chiem, Saru Subschandran and William Arild
 
 In this course you will learn the basics of JavaScript. With JavaScript we will make a simple Tic-Tac-Toe game to demonstrate how to use DOM (Document Object Model) manipulation.
 
-# Step 0: What are we going to do in this course
+## Step 0: What are we going to do in this course
 Using JavaScript we will create a simple
-# Step 0.1: Recap of the previous HTML and CSS course
-### Html base elements
+## Step 0.1: Recap of the previous HTML and CSS course
+#### Html base elements
 
 ```html
 
@@ -56,7 +56,7 @@ Using JavaScript we will create a simple
 
 ```
 
-### CSS
+#### CSS
 
 ```css
 // CSS syntax
@@ -101,13 +101,13 @@ h1 {
 
 ```
 
-# Step 0.2: What is JavaScript?
+### Step 0.2: What is JavaScript?
 Usually HTML allows you to display static content directly read from the HTML document, but sometimes you would like to control multimedia, animate images or create other dynamically updating content. This can be done using the programming language, JavaScript.
 
 JavaScript is a high-level, objectoriented programming language, alongside with HTML, CSS it is a core technology for producing web based content.
 
-# Step 0.3: JavaScript syntax
-## Variables
+### Step 0.3: JavaScript syntax
+#### Variables
 In JavaScrip variables are containers which stores data. In the example bellow you can see how to create variables.
 ```javascript
 var x = 1;
@@ -134,7 +134,7 @@ var pi = 3.14;
 var str1 = "My name is Kai";
 var str2 = 'This is Saru';
 ```
-## Fuctions
+#### Fuctions
 Functions are block of codes that performs particular tasks. They are executed when it is invoked.
 Creating functions are easy, you only have to use the keyword **function** as shown bellow.
 ```javascript
@@ -143,7 +143,7 @@ function myFunction ( parameter ... ) {
   ...
 }
 ```
-## if-else statement
+#### if-else statement
 Like in other programming languages you would sometimes like to set conditions to your program, this can be done using the if-else statement shown bellow.
 ```javascript
 if (condition){
@@ -157,7 +157,7 @@ if (condition){
   ...
 }
 ```
-## while-loop and for-loop
+#### while-loop and for-loop
 A loop can execute a block of code a defined number of time, we have two different type of loop we an use. The while-loop and the for-loop.
 ```javascript
 //Runs while the condition is true
@@ -169,7 +169,7 @@ for(int i = 0; i < n; i++){
   //Run block of code i n number of time
 }
 ```
-## Printing to console
+#### Printing to console
 Sometimes you would like to see if your code does what it is supposed to do, you can do this by printing a word in the console. You can do this using the code bellow.
 ```javascript
 console.log("Hello world!");
@@ -178,11 +178,11 @@ console.log("Hello world!");
 //Hello world!
 ```
 
-# Step 1: Prepare the HTML and CSS
+## Step 1: Prepare the HTML and CSS
 
 Before we start programming using javascript we have to set up the HTML and CSS.
 
-## Prepare the HTML
+#### Prepare the HTML
 
 First lets set up the basic HTML structure.
 ```HTML
@@ -280,7 +280,7 @@ Now we have finnished setting up our **.html** file. If you want to look at the 
 </html>
 ```
 
-## Prepare the CSS
+#### Prepare the CSS
 Next let us prepare the css file. The only thing needed to add are the id "#tic-tac-toe" and the two classes ".canvas_wrapper" and ".canvas-wrapper-parent".
 
 ```CSS
@@ -301,12 +301,12 @@ Next let us prepare the css file. The only thing needed to add are the id "#tic-
 }
 ```
 
-# Step 2: JavaScript
+## Step 2: JavaScript
 
-## Step 2.1: Explaining HTML objects
+### Step 2.1: Explaining HTML objects
 You might remember that we talked about how JavaScript can manipulate the HTML document. What we didn't talk about is why JavaScript are able to do so. To understand this you have to understand how the webpage loads HTML.
 
-### The DOM (Document Object Model) tree
+#### The DOM (Document Object Model) tree
 ![alt text](https://github.com/applitude/tic-tac-toe/blob/master/images/DOM_Tree.gif "The HTML DOM tree of object")
 
 This is the HTML DOM tree. When the webpage is loaded the browser creates a DOM of the page. Using these Objects JavaScript has all that it needs to make HTML dynamic.
@@ -353,7 +353,7 @@ This object represents a two-dimensional rendering context, which can be used to
 Now that we have finnished preparing the canvas for use we can start creating functions and draw inside the canvas.
 
 
-# Step 3: The Game
+## Step 3: The Game
 At last we can begin creating the game. But how are we going to do that? Lets start by imagine the game.
 
 What do we need? How do we do it? The best way to answare these questions are by listing it up and answare them.
@@ -367,10 +367,10 @@ What do we need? How do we do it? The best way to answare these questions are by
 3. We need to be able to play the game.
 * How? We should be able to play the game with the cursor. There are two players, whenever a player presses a cell it should show the graphic of an X or a circle dependant of whose turn it is.  
 
-## Step 3: Creating the functions
+### Step 3: Creating the functions
 Now that we know the basics of how the game is going to look like we can begin to create functions that does the right thing.
 
-## Step 3.1: Make the board (getInitialBoard)
+### Step 3.1: Make the board (getInitialBoard)
 The first thing we need to have in the game is a board. So lets create a function named getInitialBoard
 ```javascript
 function getInitialBoard(defaultValue){
