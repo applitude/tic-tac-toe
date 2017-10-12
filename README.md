@@ -13,7 +13,7 @@ Using JavaScript we will create a simple
 
 ```html
 
-// Tells the web browser that this document is an HTML5
+// Tells the web browser that this document is a HTML5 version
 
 <!DOCTYPE html>
 
