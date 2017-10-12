@@ -9,54 +9,8 @@ In this course you will learn the basics of JavaScript. With JavaScript we will 
 # Step 0: What are we going to do in this course
 Using JavaScript we will create a simple 
 # Step 0.1: Recap of the previous HTML and CSS course
-
-### Html base elements
-
-```html
-
-// Tells the web browser that this document is an HTML5
-
-<!DOCTYPE html>
-
-```
-
-```html
-
-//Defines the root element of the HTML document. All other HTML elements must be contained within this root element. 
-
-<html></html>
-
-```
-
-```html
-// Defines a cointainer for a web page's metadata
-
-<head></head>
-
-```
-
-```html
-// The container for a web page's content. 
-
-<body></body>
-
-```
-
-```html
-
-// Defines a link between the current web page and external link or resource.
-
-<link rel="stylesheet" type="text/css" href="http://www.applitude.no">
-
-
-```html
-
-// Defines a container for an external script.
-
-<script src="/javascript/myScript.js"></script>
-
-``
-
+HTML(Hyper Text Markup Language)
+CSS(Cascading Style Sheet)
 
 # Step 0.2: What is JavaScript?
 Usually HTML allows you to display static content directly read from the HTML document, but sometimes you would like to control multimedia, animate images or create other dynamically updating content. This can be done using the programming language, JavaScript. 
@@ -73,9 +27,6 @@ var z = x + y;
 // x has stored the value 1
 // y has stored the value 2
 // z has stored the value (x + y) which is 3
-
-//shorhand way to create vaiable@
-var = x, y, z=3;
 ```
 Much like other programming languages the sign (=) is an assignment operator, thus you can use it to re-assign variables
 ```javascript
@@ -623,6 +574,111 @@ function addPiece(mouse) {
 
 With this we finnished the addPieces method. The last thing to do now is to actually draw the pieces.
 
-### Step 5.1: Creating the draw functions for the pieces.
+### Step 5.1: Creating X's and the O's
 
+We've already taken care of when something has to be drawn. Now lets draw it.
+We start by making the function **drawO** and adding the necessarry variables. 
+```javascript
+function drawO(xCoordinate, yCoordinate){
+    var halfSquare = (squareSize/2);
+    var centerX = xCoordinate + halfSquare;
+    var centerY = yCoordinate + halfSquare;
+    var radius = (squareSize - 70) / 2;
+    var start = 0*Math.PI;
+    var end = 2*Math.PI;
+    
+    ...
+    
+}
+```
 
+We set the line thickness with **lineWidth** and set the color to green with **styleStroke**, then we use **beginPath** so that we can begin drawing.
+```javascript
+function drawO(xCoordinate, yCoordinate){
+    var halfSquare = (squareSize/2);
+    var centerX = xCoordinate + halfSquare;
+    var centerY = yCoordinate + halfSquare;
+    var radius = (squareSize - 70) / 2;
+    var start = 0*Math.PI;
+    var end = 2*Math.PI;
+    
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = "#ff0000";
+    ctx.beginPath();
+    ...
+    
+}
+```
+To make a circle we have to use the **arc** method. The two first parameters is the x and y coordinates of the center of the circle.
+The third parameter is the radius of the circle. The forth parameter is the starting angle, and the last parameter is the ending angle (The angles is in radians). Lastly we can draw the circle with the **stroke** method. 
+```javascript
+function drawO(xCoordinate, yCoordinate){
+    var halfSquare = (squareSize/2);
+    var centerX = xCoordinate + halfSquare;
+    var centerY = yCoordinate + halfSquare;
+    var radius = (squareSize - 70) / 2;
+    var start = 0*Math.PI;
+    var end = 2*Math.PI;
+
+    ctx.lineWidth = 10;
+    ctx.strokeStyle = "#ff0000";
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, start, end);
+    ctx.stroke();
+
+}
+```
+
+The **drawO** is now finnished.
+
+The remaining **drawX** function is really similar, it only uses two lines that crosses eachother. We start by making a variable and setting the color and the line width. 
+```javascript
+function drawX(xCoordinate, yCoordinate){
+    var offset = squareSize/4;
+    ctx.strokeStyle = "#00cc00";
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    
+    ...
+    
+```
+
+To make a diagonal line we just have to offsett the path.
+```javascript
+function drawX(xCoordinate, yCoordinate){
+    var offset = squareSize/4;
+    ctx.strokeStyle = "#00cc00";
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    
+    ctx.moveTo(xCoordinate + offset, yCoordinate + offset);
+    ctx.lineTo(xCoordinate + squareSize - offset,
+        yCoordinate + squareSize -offset);
+    ...
+}
+```
+
+Now we have made the path we can just mirror the same thing to make a line to the other side. Then draw the with the **stroke** method.
+```javascript
+function drawX(xCoordinate, yCoordinate){
+    ctx.strokeStyle = "#00cc00";
+    //ctx.lineWidth = 10;
+    ctx.beginPath();
+    var offset = squareSize/4;
+
+    ctx.moveTo(xCoordinate + offset, yCoordinate + offset);
+    ctx.lineTo(xCoordinate + squareSize - offset,
+        yCoordinate + squareSize -offset);
+
+    ctx.moveTo(xCoordinate + offset, yCoordinate + squareSize - offset);
+    ctx.lineTo(xCoordinate + squareSize - offset,
+        yCoordinate + offset);
+
+    ctx.stroke();
+
+}
+```
+
+At last we finnished. We are now able to play the game. Trying it out you might notice that you can change the pieces multiple times, that's the logic of the game. We're not going to do this today. If you want to do it yourself a good tips is to use the "2D array" **board** variable we made earlier to make winn conditions and to restrict disallow changing the pieces.
+
+We will add the finnished game at a later date.
