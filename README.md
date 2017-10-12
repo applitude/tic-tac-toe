@@ -7,7 +7,7 @@ This crash course was made by Kai Jeu Chiem, Saru Subschandran and William Arild
 In this course you will learn the basics of JavaScript. With JavaScript we will make a simple Tic-Tac-Toe game to demonstrate how to use DOM (Document Object Model) manipulation.
 
 # Step 0: What are we going to do in this course
-Using JavaScript we will create a simple 
+Using JavaScript we will create a simple
 # Step 0.1: Recap of the previous HTML and CSS course
 ### Html base elements
 
@@ -21,7 +21,7 @@ Using JavaScript we will create a simple
 
 ```html
 
-//Defines the root element of the HTML document. All other HTML elements must be contained within this root element. 
+//Defines the root element of the HTML document. All other HTML elements must be contained within this root element.
 
 <html></html>
 
@@ -35,7 +35,7 @@ Using JavaScript we will create a simple
 ```
 
 ```html
-// The container for a web page's content. 
+// The container for a web page's content.
 
 <body></body>
 
@@ -81,13 +81,13 @@ h1 {
 
 // Example
 
-#firstname { 
+#firstname {
     background-color: blue;
 }
 
 
 
-// CSS class selector 
+// CSS class selector
 
 .class {
     css declarations;
@@ -95,16 +95,16 @@ h1 {
 
 // Example
 
-.intro { 
+.intro {
     background-color: yellow;
 }
 
 ```
 
 # Step 0.2: What is JavaScript?
-Usually HTML allows you to display static content directly read from the HTML document, but sometimes you would like to control multimedia, animate images or create other dynamically updating content. This can be done using the programming language, JavaScript. 
+Usually HTML allows you to display static content directly read from the HTML document, but sometimes you would like to control multimedia, animate images or create other dynamically updating content. This can be done using the programming language, JavaScript.
 
-JavaScript is a high-level, objectoriented programming language, alongside with HTML, CSS it is a core technology for producing web based content. 
+JavaScript is a high-level, objectoriented programming language, alongside with HTML, CSS it is a core technology for producing web based content.
 
 # Step 0.3: JavaScript syntax
 ## Variables
@@ -169,7 +169,7 @@ for(int i = 0; i < n; i++){
   //Run block of code i n number of time
 }
 ```
-## Printing to console 
+## Printing to console
 Sometimes you would like to see if your code does what it is supposed to do, you can do this by printing a word in the console. You can do this using the code bellow.
 ```javascript
 console.log("Hello world!");
@@ -197,7 +197,7 @@ First lets set up the basic HTML structure.
 </html>
 ```
 We can then add a **<title>** tag with a title inside the **<head>** tag.
- 
+
 ```HTML
 ...
 <head>
@@ -207,7 +207,7 @@ We can then add a **<title>** tag with a title inside the **<head>** tag.
 ...
 ```
 
-To set the alignments and to style the HTML we have to link to a **.css** file. This means we have to tell the document to link to the **.css** file in the header. Lets call this file 'ticTacToe.css'. 
+To set the alignments and to style the HTML we have to link to a **.css** file. This means we have to tell the document to link to the **.css** file in the header. Lets call this file 'ticTacToe.css'.
 ```HTML
 ...
 <head>
@@ -301,13 +301,13 @@ Next let us prepare the css file. The only thing needed to add are the id "#tic-
 }
 ```
 
-# Step 2: JavaScript 
+# Step 2: JavaScript
 
 ## Step 2.1: Explaining HTML objects
 You might remember that we talked about how JavaScript can manipulate the HTML document. What we didn't talk about is why JavaScript are able to do so. To understand this you have to understand how the webpage loads HTML.
 
 ### The DOM (Document Object Model) tree
-![alt text](https://github.com/applitude/tic-tac-toe/blob/master/DOM_Tree.gif "The HTML DOM tree of object")
+![alt text](https://github.com/applitude/tic-tac-toe/blob/master/images/DOM_Tree.gif "The HTML DOM tree of object")
 
 This is the HTML DOM tree. When the webpage is loaded the browser creates a DOM of the page. Using these Objects JavaScript has all that it needs to make HTML dynamic.
 
@@ -321,9 +321,9 @@ So, what can JavaScript do with these objects?
 
 Using this knowledge we can now start programming in JavaScript.
 
-## Step 2.2: Set up the canvas 
+## Step 2.2: Set up the canvas
 At last we can begin using JavaScript. The first we are going to do is get the canvas element, therefore we are going to define a variables canvasSize.
- 
+
 ```javascript
 var canvasSize = 500;
 ```
@@ -422,7 +422,7 @@ function drawLines( lineWidth, strokeStyle) {
 ...
 }
 ```
-At last we can begin displaying actual graphic. We are going to use the **moveTo** method to set the beginning of the path. Afterwards we can use the **lineTo** method to set the location where the line should end. The parameters are x- and y-cordinates. Now we can use  the **stroke** which draws the path defined with **moveTo** and **lineTo**. 
+At last we can begin displaying actual graphic. We are going to use the **moveTo** method to set the beginning of the path. Afterwards we can use the **lineTo** method to set the location where the line should end. The parameters are x- and y-cordinates. Now we can use  the **stroke** which draws the path defined with **moveTo** and **lineTo**.
 
  ```javascript
 function drawLines( lineWidth, strokeStyle) {
@@ -431,7 +431,7 @@ function drawLines( lineWidth, strokeStyle) {
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = strokeStyle;
     ctx.beginPath();
-    
+
     ctx.moveTo(lineStart, 1);
     ctx.lineTo(lineLength, 1);
     ctx.stroke();
@@ -481,7 +481,7 @@ canvas.addEventListener('mouseup', function (event){
 });
 ```
 
-The first paramether is what we want to listen for. In this case, we choose the 'mouseup' which means that when the player releases the mouse ( after pressing it down) we do something. 
+The first paramether is what we want to listen for. In this case, we choose the 'mouseup' which means that when the player releases the mouse ( after pressing it down) we do something.
 
 Now we need a way too make our game turnbased. We create a player variable so that we can know whose turn it is. Then everytime we click we change the player value.
 
@@ -499,7 +499,7 @@ canvas.addEventListener('mouseup', function (event) {
 });
 ```
 
-Next we would like to know where the players are clicking. We save the mousePositon in a varable calculated by our method getMousePositon which recieves an event from the eventlistener. 
+Next we would like to know where the players are clicking. We save the mousePositon in a varable calculated by our method getMousePositon which recieves an event from the eventlistener.
 
 ```javascript
 canvas.addEventListener('mouseup', function (event) {
@@ -516,7 +516,7 @@ canvas.addEventListener('mouseup', function (event) {
 });
 ```
 
-With the position we can now place a piece on the canvas, and since we chaged the player, each gets his/hers turn. 
+With the position we can now place a piece on the canvas, and since we chaged the player, each gets his/hers turn.
 
 ```javascript
 canvas.addEventListener('mouseup', function (event) {
@@ -553,7 +553,7 @@ canvas.addEventListener('mouseup', function (event) {
 });
 ```
 
- If you want to, you can change the size of the third and fourth argument in the "fillRect" method in the playingArea function, and skip this line. 
+ If you want to, you can change the size of the third and fourth argument in the "fillRect" method in the playingArea function, and skip this line.
 
 
 The string **'mouseup'** is the name of the event, while the **function (event)** is required to sepcify the functun to run when the evnet occurs.
@@ -568,7 +568,7 @@ function getMousePosition(event) {
 To be able to register where the mouse has clicked first we have to know where it should detect the click. Lets say the canvas is the clickable space.
 ```javascript
 function getMousePosition(event) {
-    
+
     var rect = canvas.getBoundingClientRect();
 ...
 }
@@ -592,7 +592,7 @@ Now that we can detect the mouse position we can begin adding tic-tac-toe pieces
 
 ## Step 5: Adding pieces to the board.
 
-Now we want to add an "X" or a "O" when we press a specific cell. We'll make the function **addPiece** with the the press cordinates as the parameter. 
+Now we want to add an "X" or a "O" when we press a specific cell. We'll make the function **addPiece** with the the press cordinates as the parameter.
 
 ```javascript
 function addPiece(mouse){
@@ -666,7 +666,7 @@ With this we finnished the addPieces method. The last thing to do now is to actu
 ### Step 5.1: Creating X's and the O's
 
 We've already taken care of when something has to be drawn. Now lets draw it.
-We start by making the function **drawO** and adding the necessarry variables. 
+We start by making the function **drawO** and adding the necessarry variables.
 ```javascript
 function drawO(xCoordinate, yCoordinate){
     var halfSquare = (squareSize/2);
@@ -675,9 +675,9 @@ function drawO(xCoordinate, yCoordinate){
     var radius = (squareSize - 70) / 2;
     var start = 0*Math.PI;
     var end = 2*Math.PI;
-    
+
     ...
-    
+
 }
 ```
 
@@ -690,16 +690,16 @@ function drawO(xCoordinate, yCoordinate){
     var radius = (squareSize - 70) / 2;
     var start = 0*Math.PI;
     var end = 2*Math.PI;
-    
+
     ctx.lineWidth = 10;
     ctx.strokeStyle = "#ff0000";
     ctx.beginPath();
     ...
-    
+
 }
 ```
 To make a circle we have to use the **arc** method. The two first parameters is the x and y coordinates of the center of the circle.
-The third parameter is the radius of the circle. The forth parameter is the starting angle, and the last parameter is the ending angle (The angles is in radians). Lastly we can draw the circle with the **stroke** method. 
+The third parameter is the radius of the circle. The forth parameter is the starting angle, and the last parameter is the ending angle (The angles is in radians). Lastly we can draw the circle with the **stroke** method.
 ```javascript
 function drawO(xCoordinate, yCoordinate){
     var halfSquare = (squareSize/2);
@@ -720,16 +720,16 @@ function drawO(xCoordinate, yCoordinate){
 
 The **drawO** is now finnished.
 
-The remaining **drawX** function is really similar, it only uses two lines that crosses eachother. We start by making a variable and setting the color and the line width. 
+The remaining **drawX** function is really similar, it only uses two lines that crosses eachother. We start by making a variable and setting the color and the line width.
 ```javascript
 function drawX(xCoordinate, yCoordinate){
     var offset = squareSize/4;
     ctx.strokeStyle = "#00cc00";
     ctx.lineWidth = 10;
     ctx.beginPath();
-    
+
     ...
-    
+
 ```
 
 To make a diagonal line we just have to offsett the path.
@@ -739,7 +739,7 @@ function drawX(xCoordinate, yCoordinate){
     ctx.strokeStyle = "#00cc00";
     ctx.lineWidth = 10;
     ctx.beginPath();
-    
+
     ctx.moveTo(xCoordinate + offset, yCoordinate + offset);
     ctx.lineTo(xCoordinate + squareSize - offset,
         yCoordinate + squareSize -offset);
