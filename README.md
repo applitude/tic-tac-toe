@@ -326,6 +326,7 @@ At last we can begin using JavaScript. The first we are going to do is get the c
 
 ```javascript
 var canvasSize = 500;
+var squareSize = canvasSize / 3;
 ```
 We are going to use the variable to define the canvases size. To get the canvas element from the HTML document we can reference the element from the id attribute.
 ```javascript
@@ -467,10 +468,12 @@ The functions for drawing the board lines are now finnished. To draw the board t
 ```javascript
 ...
 var lineColor = "#808080"; //black
-drawLine(10, lineColor);
+drawLines(10, lineColor);
 ```
 
-## Step 4: Mouse support
+## Step 4: 
+
+support
 
 Lets start with implementing mouse support. We start by adding a event listener to the canvas. This is a function that constantly listens for imput of our choosing.
 
